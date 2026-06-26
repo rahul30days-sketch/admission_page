@@ -7,47 +7,47 @@
    ============================================================ */
 
 @theme {
-  /* ---- Brand: Deep Navy (primary surface) ---- */
-  --color-navy-50: #eef2fb;
-  --color-navy-100: #d3def3;
-  --color-navy-200: #a7bbe6;
-  --color-navy-300: #6e8ed1;
-  --color-navy-400: #3f60ae;
-  --color-navy-500: #21408a;
-  --color-navy-600: #16306c;
-  --color-navy-700: #102450;
-  --color-navy-800: #0a1838;
-  --color-navy-900: #070f26;
-  --color-navy-950: #040917;
+  /* ---- Brand: Royal Indigo #3B328A (primary surface) ---- */
+  --color-navy-50: #f1f0f9;
+  --color-navy-100: #ddd9f0;
+  --color-navy-200: #bdb6e1;
+  --color-navy-300: #968cce;
+  --color-navy-400: #6f63b4;
+  --color-navy-500: #4f4399;
+  --color-navy-600: #3b328a; /* Royal Indigo */
+  --color-navy-700: #312a70;
+  --color-navy-800: #241f54;
+  --color-navy-900: #181439;
+  --color-navy-950: #100d27;
 
-  /* ---- Brand: Royal Blue (primary action) ---- */
-  --color-royal-300: #93b4ff;
-  --color-royal-400: #5d87f7;
-  --color-royal-500: #3061ee;
-  --color-royal-600: #1d49d8;
-  --color-royal-700: #1839ab;
+  /* ---- Lotus Pink #FA8DD2 (primary action / CTA) ---- */
+  --color-royal-300: #ffb4e1;
+  --color-royal-400: #fa8dd2; /* Lotus Pink */
+  --color-royal-500: #ef5fb8;
+  --color-royal-600: #d83d9d;
+  --color-royal-700: #b22e80;
 
-  /* ---- Accent: Flame Orange ---- */
-  --color-flame-300: #ffb47a;
-  --color-flame-400: #ff934d;
-  --color-flame-500: #ff6b2c;
-  --color-flame-600: #f1530b;
+  /* ---- Heritage Gold #C9A227 (warm accent) ---- */
+  --color-flame-300: #e6cd7a;
+  --color-flame-400: #d4af37;
+  --color-flame-500: #c9a227;
+  --color-flame-600: #a9851c;
 
-  /* ---- Accent: Golden Yellow ---- */
-  --color-gold-300: #ffdd84;
-  --color-gold-400: #ffc64b;
-  --color-gold-500: #f5a623;
+  /* ---- Heritage Gold #C9A227 (premium accent) ---- */
+  --color-gold-300: #e9cf73;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #c9a227;
 
-  /* ---- Accent: Ice / Light Sky ---- */
-  --color-ice-200: #d3e8ff;
-  --color-ice-300: #a9d2ff;
-  --color-ice-400: #79b8fb;
+  /* ---- Soft lavender/pink tint (light accents on dark indigo) ---- */
+  --color-ice-200: #efe3f5;
+  --color-ice-300: #e4c9ee;
+  --color-ice-400: #d9a9e6;
 
   /* ---- Neutral surfaces & ink ---- */
-  --color-mist: #f6f8fc; /* very light gray */
-  --color-haze: #eef3ff; /* soft blue tint */
-  --color-ink: #0b1220; /* primary text on light */
-  --color-ink-soft: #4a5570; /* muted text on light */
+  --color-mist: #faf9f6; /* warm near-white page base */
+  --color-haze: #edeae2; /* Ivory Cream — cards/panels */
+  --color-ink: #161333; /* indigo-tinted text on light */
+  --color-ink-soft: #5a5478; /* muted text on light */
 
   /* ---- Typography ---- */
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system,
@@ -62,11 +62,11 @@
   --radius-6xl: 3rem;
 
   /* ---- Brand shadows ---- */
-  --shadow-glow: 0 0 0 1px rgba(48, 97, 238, 0.18),
-    0 18px 50px -12px rgba(29, 73, 216, 0.45);
-  --shadow-card: 0 1px 2px rgba(7, 15, 38, 0.04),
-    0 14px 40px -16px rgba(16, 36, 80, 0.28);
-  --shadow-float: 0 24px 70px -20px rgba(7, 15, 38, 0.35);
+  --shadow-glow: 0 0 0 1px rgba(216, 61, 157, 0.18),
+    0 18px 50px -12px rgba(216, 61, 157, 0.45);
+  --shadow-card: 0 1px 2px rgba(16, 13, 39, 0.05),
+    0 14px 40px -16px rgba(24, 20, 57, 0.28);
+  --shadow-float: 0 24px 70px -20px rgba(16, 13, 39, 0.35);
 
   /* ---- Eased animations as utilities ---- */
   --animate-float-slow: floaty 9s ease-in-out infinite;
@@ -115,12 +115,12 @@
   }
 
   ::selection {
-    background: var(--color-royal-500);
+    background: var(--color-navy-600);
     color: white;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-royal-500);
+    outline: 2px solid var(--color-navy-600);
     outline-offset: 3px;
     border-radius: 4px;
   }

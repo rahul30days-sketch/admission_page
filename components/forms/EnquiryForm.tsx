@@ -80,9 +80,8 @@ export function EnquiryForm({
 
     setStatus("submitting");
     setServerMsg("");
-    // Static-hosting build: post straight to the CRM webhook from the browser.
+    // Static-hosting build: post straight to the lead webhooks from the browser.
     // Form-encoded keeps it a CORS "simple request" (no preflight); no-cors = fire-and-forget.
-    const endpoint = process.env.NEXT_PUBLIC_CRM_WEBHOOK_URL;
     const payload = new URLSearchParams({
       name: data.name,
       email: data.email,
@@ -93,20 +92,30 @@ export function EnquiryForm({
       consent: data.consent ? "yes" : "no",
       source: "SITASRM Admissions Landing Page",
       campaign: "MBA & B.Tech Admissions 2026",
-      message: `Programme interest: ${data.course}. Location: ${data.city}, ${data.state}.`,
+      message: `🎓 New Admission Enquiry — SITASRM\n\n👤 Name: ${data.name}\n📞 Phone: ${data.phone}\n📧 Email: ${data.email}\n📚 Programme: ${data.course}\n📍 Location: ${data.city}, ${data.state}\n\nSource: SITASRM Admissions Landing Page\nCampaign: MBA & B.Tech Admissions 2026`,
     });
-    try {
-      if (endpoint) {
-        await fetch(endpoint, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-          body: payload.toString(),
-        });
-      }
-      // no-cors yields an opaque response we can't read, so confirm optimistically.
+
+    // Send to every configured webhook (CRM + WordPress) in parallel.
+    const endpoints = [
+      process.env.NEXT_PUBLIC_CRM_WEBHOOK_URL,
+      process.env.NEXT_PUBLIC_WP_WEBHOOK_URL,
+    ].filter((u): u is string => Boolean(u));
+
+    const send = (url: string) =>
+      fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+        body: payload.toString(),
+      });
+
+    const results = await Promise.allSettled(endpoints.map(send));
+    // no-cors responses are opaque; treat as delivered unless every request failed (e.g. offline).
+    const delivered = endpoints.length === 0 || results.some((r) => r.status === "fulfilled");
+
+    if (delivered) {
       setStatus("success");
-    } catch {
+    } else {
       setStatus("error");
       setServerMsg("Network error. Please check your connection and retry.");
     }
@@ -277,7 +286,7 @@ export function EnquiryForm({
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="sheen group mt-4 flex h-13 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-royal-400 via-royal-500 to-royal-600 py-3.5 font-semibold text-white shadow-glow transition hover:brightness-110 disabled:opacity-70"
+              className="sheen group mt-4 flex h-13 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-royal-600 via-royal-700 to-royal-700 py-3.5 font-semibold text-white shadow-glow transition hover:brightness-110 disabled:opacity-70"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {status === "submitting" ? (

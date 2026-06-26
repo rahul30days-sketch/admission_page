@@ -1,5 +1,4 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Logo } from "@/components/ui/Logo";
 import { socialIconMap } from "@/components/ui/SocialIcons";
 import { approvals, footerNav, site } from "@/lib/content";
 
@@ -28,7 +27,14 @@ export function Footer() {
           <div className="grid gap-12 lg:grid-cols-12">
             {/* Brand */}
             <div className="lg:col-span-4">
-              <Logo tone="dark" />
+              <a href="#top" aria-label="SITASRM Engineering & Research Institute — home">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/white-logo.webp"
+                  alt="SITASRM Engineering & Research Institute"
+                  className="h-14 w-auto"
+                />
+              </a>
               <p className="mt-5 max-w-sm text-sm leading-relaxed text-ice-200/70">
                 {site.tagline}. {site.promise} A Centre of Excellence for
                 engineering, management and research in Knowledge Park-III,
@@ -119,7 +125,7 @@ export function Footer() {
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-royal-300" />
                   <a
                     href={`mailto:${site.emails[0]}`}
-                    className="break-all text-ice-200/70 transition hover:text-white"
+                    className="whitespace-nowrap text-ice-200/70 transition hover:text-white"
                   >
                     {site.emails[0]}
                   </a>
