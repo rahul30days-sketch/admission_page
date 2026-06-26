@@ -58,7 +58,7 @@ export function StickyDock() {
             </a>
             <button
               onClick={() => openEnquiry()}
-              className="sheen group flex h-14 items-center gap-2 rounded-full bg-gradient-to-br from-flame-400 to-flame-500 pl-5 pr-6 font-semibold text-navy-950 shadow-[0_16px_40px_-12px_rgba(255,107,44,0.65)] transition hover:-translate-y-0.5"
+              className="sheen group flex h-14 items-center gap-2 rounded-full bg-gradient-to-br from-flame-400 to-flame-500 pl-5 pr-6 font-semibold text-navy-950 shadow-[0_16px_40px_-12px_rgba(201,162,39,0.6)] transition hover:-translate-y-0.5"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <span className="relative flex h-2.5 w-2.5">

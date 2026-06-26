@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const COLORS = ["#3061ee", "#ff6b2c", "#ffc64b", "#79b8fb", "#1d49d8", "#ffffff"];
+const COLORS = ["#3b328a", "#fa8dd2", "#c9a227", "#d9a9e6", "#ef5fb8", "#ffffff"];
 
 /** Lightweight one-shot canvas confetti. Fires whenever `fire` flips true. */
 export function Confetti({ fire }: { fire: boolean }) {

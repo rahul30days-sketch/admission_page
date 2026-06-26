@@ -23,6 +23,9 @@ function SiteLogo({ className, onClick }: { className?: string; onClick?: () => 
       <img
         src="/site-logo.png"
         alt="SITASRM Engineering & Research Institute"
+        width={145}
+        height={17}
+        decoding="async"
         className="h-8 w-auto sm:h-11 lg:h-14"
       />
     </a>
@@ -34,7 +37,7 @@ function AicteLogo({ className }: { className?: string }) {
   return (
     <div className={cn("flex shrink-0 items-center", className)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/aicte-logo.png" alt="AICTE Approved" className="h-7 w-auto sm:h-9 lg:h-11" />
+      <img src="/aicte-logo.png" alt="AICTE Approved" width={685} height={270} decoding="async" className="h-7 w-auto sm:h-9 lg:h-11" />
     </div>
   );
 }
@@ -111,7 +114,7 @@ export function Navbar() {
       <div
         className={cn(
           "border-b border-navy-900/10 bg-white transition-all duration-300",
-          scrolled ? "shadow-[0_8px_30px_-12px_rgba(7,15,38,0.18)]" : "shadow-sm"
+          scrolled ? "shadow-[0_8px_30px_-12px_rgba(16,13,39,0.18)]" : "shadow-sm"
         )}
       >
         <nav className="shell flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">

@@ -92,8 +92,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f8fc" },
-    { media: "(prefers-color-scheme: dark)", color: "#070f26" },
+    { media: "(prefers-color-scheme: light)", color: "#faf9f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#100d27" },
   ],
   colorScheme: "light",
   width: "device-width",
@@ -109,12 +109,22 @@ export default function RootLayout({
       className={`${geist.variable} ${sora.variable} ${fraunces.variable}`}
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+        {/* Universal CSP fallback for hosts that don't apply `.htaccess` / `_headers`.
+            Header-only directives (frame-ancestors, HSTS, X-Frame-Options) are set
+            at the host layer — see public/.htaccess and public/_headers.
+            `'unsafe-eval'` is added ONLY in dev (React debugging needs it); the
+            production CSP never includes it. */}
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content={
+            `default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; ` +
+            `img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; ` +
+            `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}; ` +
+            `connect-src 'self' https:; frame-src 'self' https://www.google.com https://maps.google.com; ` +
+            `upgrade-insecure-requests`
+          }
         />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
       </head>
       <body className="min-h-screen bg-mist text-ink antialiased">
         {children}

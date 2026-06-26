@@ -17,7 +17,7 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px",
-          background: "linear-gradient(135deg, #070f26 0%, #0a1838 55%, #102450 100%)",
+          background: "linear-gradient(135deg, #100d27 0%, #181439 55%, #312a70 100%)",
           color: "white",
           fontFamily: "sans-serif",
           position: "relative",
@@ -31,7 +31,7 @@ export default function OpengraphImage() {
             width: 520,
             height: 520,
             borderRadius: 9999,
-            background: "radial-gradient(circle, rgba(48,97,238,0.55), transparent 70%)",
+            background: "radial-gradient(circle, rgba(79,67,153,0.55), transparent 70%)",
             display: "flex",
           }}
         />
@@ -43,7 +43,7 @@ export default function OpengraphImage() {
             width: 420,
             height: 420,
             borderRadius: 9999,
-            background: "radial-gradient(circle, rgba(255,107,44,0.4), transparent 70%)",
+            background: "radial-gradient(circle, rgba(250,141,210,0.38), transparent 70%)",
             display: "flex",
           }}
         />
@@ -55,7 +55,7 @@ export default function OpengraphImage() {
               width: 72,
               height: 72,
               borderRadius: 20,
-              background: "linear-gradient(135deg, #5d87f7, #1d49d8)",
+              background: "linear-gradient(135deg, #fa8dd2, #d83d9d)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -68,7 +68,7 @@ export default function OpengraphImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 32, fontWeight: 800, letterSpacing: -1 }}>SITASRM</div>
-            <div style={{ fontSize: 18, color: "#a9d2ff" }}>Engineering &amp; Research Institute</div>
+            <div style={{ fontSize: 18, color: "#e4c9ee" }}>Engineering &amp; Research Institute</div>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default function OpengraphImage() {
               fontSize: 20,
               fontWeight: 600,
               letterSpacing: 4,
-              color: "#ffc64b",
+              color: "#d4af37",
               textTransform: "uppercase",
             }}
           >

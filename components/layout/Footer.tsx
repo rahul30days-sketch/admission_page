@@ -18,7 +18,7 @@ export function Footer() {
         className="pointer-events-none absolute inset-x-0 top-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(120,160,255,0.5), transparent)",
+            "linear-gradient(90deg, transparent, rgba(250,141,210,0.5), transparent)",
         }}
       />
 
@@ -32,6 +32,10 @@ export function Footer() {
                 <img
                   src="/white-logo.webp"
                   alt="SITASRM Engineering & Research Institute"
+                  width={146}
+                  height={17}
+                  loading="lazy"
+                  decoding="async"
                   className="h-14 w-auto"
                 />
               </a>

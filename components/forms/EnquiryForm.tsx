@@ -21,16 +21,35 @@ const initial: FormState = {
   name: "", phone: "", email: "", course: "", state: "", city: "", consent: false,
 };
 
+// Letters (incl. accented), spaces, apostrophes, hyphens and dots only.
+const NAME_RE = /^[\p{L}][\p{L}\s.'-]*$/u;
+
 const validators: Record<keyof Omit<FormState, "consent">, (v: string) => string> = {
-  name: (v) => (v.trim().length < 2 ? "Please enter your full name." : ""),
+  name: (v) => {
+    const t = v.trim();
+    if (t.length < 2) return "Please enter your full name.";
+    if (t.length > 60) return "Name is too long.";
+    if (!NAME_RE.test(t)) return "Use letters only — no numbers or symbols.";
+    return "";
+  },
   phone: (v) =>
     !/^(?:\+?91[\s-]?)?[6-9]\d{9}$/.test(v.replace(/\s/g, ""))
       ? "Enter a valid 10-digit mobile number."
       : "",
-  email: (v) => (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? "Enter a valid email address." : ""),
+  email: (v) => {
+    const t = v.trim();
+    if (t.length > 100) return "Email is too long.";
+    return !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(t) ? "Enter a valid email address." : "";
+  },
   course: (v) => (!v ? "Please select a course." : ""),
   state: (v) => (!v ? "Please select your state." : ""),
-  city: (v) => (v.trim().length < 2 ? "Please enter your city." : ""),
+  city: (v) => {
+    const t = v.trim();
+    if (t.length < 2) return "Please enter your city.";
+    if (t.length > 60) return "City name is too long.";
+    if (!NAME_RE.test(t)) return "Use letters only — no numbers or symbols.";
+    return "";
+  },
 };
 
 const FIELDS: (keyof Omit<FormState, "consent">)[] = ["name", "phone", "email", "course", "state", "city"];
@@ -153,6 +172,8 @@ export function EnquiryForm({
         {status === "success" ? (
           <motion.div
             key="success"
+            role="status"
+            aria-live="polite"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             className="relative z-10 flex flex-col items-center py-8 text-center"
@@ -224,19 +245,19 @@ export function EnquiryForm({
                 id="ef-name" label="Full name" value={data.name} className="sm:col-span-2"
                 onChange={(v) => set("name", v)} onBlur={() => blur("name")}
                 error={touched.name ? errors.name : ""} valid={!!data.name && !errors.name}
-                autoComplete="name" autoFocus={autoFocus}
+                autoComplete="name" autoFocus={autoFocus} maxLength={60} required
               />
               <Field
                 id="ef-phone" label="Mobile number" type="tel" inputMode="tel" value={data.phone}
                 onChange={(v) => set("phone", v)} onBlur={() => blur("phone")}
                 error={touched.phone ? errors.phone : ""} valid={!!data.phone && !errors.phone}
-                autoComplete="tel"
+                autoComplete="tel" maxLength={16} required
               />
               <Field
                 id="ef-email" label="Email address" type="email" inputMode="email" value={data.email}
                 onChange={(v) => set("email", v)} onBlur={() => blur("email")}
                 error={touched.email ? errors.email : ""} valid={!!data.email && !errors.email}
-                autoComplete="email"
+                autoComplete="email" maxLength={100} required
               />
               <Select
                 id="ef-course" label="Course of interest" value={data.course} options={courseOptions}
@@ -252,41 +273,49 @@ export function EnquiryForm({
                 id="ef-city" label="City" value={data.city} className="sm:col-span-2"
                 onChange={(v) => set("city", v)} onBlur={() => blur("city")}
                 error={touched.city ? errors.city : ""} valid={!!data.city && !errors.city}
-                autoComplete="address-level2"
+                autoComplete="address-level2" maxLength={60} required
               />
             </div>
 
-            {/* consent */}
-            <label className="mt-4 flex cursor-pointer items-start gap-2.5">
-              <span className="relative mt-0.5 flex h-5 w-5 shrink-0">
-                <input
-                  type="checkbox"
-                  checked={data.consent}
-                  onChange={(e) => set("consent", e.target.checked)}
-                  onBlur={() => blur("consent")}
-                  className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-navy-900/25 bg-white transition checked:border-royal-500 checked:bg-royal-500"
-                  aria-invalid={!!(touched.consent && errors.consent)}
-                />
-                <Check className="pointer-events-none absolute left-0.5 top-0.5 h-4 w-4 scale-0 text-white transition peer-checked:scale-100" />
-              </span>
-              <span className="text-xs leading-relaxed text-ink-soft">
-                I authorise SITASRM &amp; its counsellors to contact me regarding 2026 admissions via call, SMS, email &amp; WhatsApp.
-              </span>
-            </label>
-            {touched.consent && errors.consent && (
-              <p className="mt-1 text-xs text-red-500">{errors.consent}</p>
-            )}
+            {/* consent — visually separated from the submit button */}
+            <div className="mt-5 rounded-2xl border border-navy-900/10 bg-navy-900/[0.03] p-3.5">
+              <label htmlFor="ef-consent" className="flex cursor-pointer items-start gap-2.5">
+                <span className="relative mt-0.5 flex h-5 w-5 shrink-0">
+                  <input
+                    id="ef-consent"
+                    type="checkbox"
+                    checked={data.consent}
+                    onChange={(e) => set("consent", e.target.checked)}
+                    onBlur={() => blur("consent")}
+                    className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-navy-900/25 bg-white transition checked:border-royal-500 checked:bg-royal-500"
+                    aria-invalid={!!(touched.consent && errors.consent)}
+                    aria-describedby={touched.consent && errors.consent ? "ef-consent-err" : undefined}
+                  />
+                  <Check className="pointer-events-none absolute left-0.5 top-0.5 h-4 w-4 scale-0 text-white transition peer-checked:scale-100" />
+                </span>
+                <span className="text-xs leading-relaxed text-ink-soft">
+                  I authorise SITASRM &amp; its counsellors to contact me regarding 2026 admissions via call, SMS, email &amp; WhatsApp.
+                </span>
+              </label>
+              {touched.consent && errors.consent && (
+                <p id="ef-consent-err" className="mt-1.5 text-xs text-red-500">{errors.consent}</p>
+              )}
+            </div>
 
-            {status === "error" && (
-              <p className="mt-3 rounded-xl bg-red-50 px-3 py-2 text-xs font-medium text-red-600">
-                {serverMsg}
-              </p>
-            )}
+            {/* status — announced to screen readers */}
+            <div aria-live="assertive" role="status">
+              {status === "error" && (
+                <p className="mt-3 rounded-xl bg-red-50 px-3 py-2 text-xs font-medium text-red-600">
+                  {serverMsg}
+                </p>
+              )}
+            </div>
 
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="sheen group mt-4 flex h-13 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-royal-600 via-royal-700 to-royal-700 py-3.5 font-semibold text-white shadow-glow transition hover:brightness-110 disabled:opacity-70"
+              aria-busy={status === "submitting"}
+              className="sheen group mt-4 flex h-13 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-br from-royal-600 via-royal-700 to-royal-700 py-3.5 font-semibold text-white shadow-glow transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {status === "submitting" ? (
@@ -357,13 +386,14 @@ function FieldShell({
 
 function Field({
   id, label, value, onChange, onBlur, error, valid, type = "text",
-  inputMode, autoComplete, autoFocus, className,
+  inputMode, autoComplete, autoFocus, className, maxLength, required,
 }: {
   id: string; label: string; value: string;
   onChange: (v: string) => void; onBlur: () => void;
   error?: string; valid?: boolean; type?: string;
   inputMode?: "tel" | "email" | "text" | "numeric";
   autoComplete?: string; autoFocus?: boolean; className?: string;
+  maxLength?: number; required?: boolean;
 }) {
   const [focused, setFocused] = useState(false);
   const floated = focused || value.length > 0;
@@ -377,6 +407,8 @@ function Field({
           inputMode={inputMode}
           autoComplete={autoComplete}
           autoFocus={autoFocus}
+          maxLength={maxLength}
+          required={required}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => { setFocused(false); onBlur(); }}

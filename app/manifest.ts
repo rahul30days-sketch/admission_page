@@ -10,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "MBA & B.Tech Admissions 2026 — AICTE-approved, AI-powered campus in Greater Noida, Delhi NCR.",
     start_url: "/",
     display: "standalone",
-    background_color: "#070f26",
-    theme_color: "#070f26",
+    background_color: "#100d27",
+    theme_color: "#100d27",
     icons: [{ src: "/favicon.ico", sizes: "any", type: "image/x-icon" }],
   };
 }

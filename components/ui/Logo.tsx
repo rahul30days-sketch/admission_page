@@ -5,9 +5,9 @@ export function LogoMark({ className }: { className?: string }) {
     <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
       <defs>
         <linearGradient id="seri-logo" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#5d87f7" />
-          <stop offset="0.55" stopColor="#3061ee" />
-          <stop offset="1" stopColor="#1d49d8" />
+          <stop offset="0" stopColor="#6f63b4" />
+          <stop offset="0.55" stopColor="#4f4399" />
+          <stop offset="1" stopColor="#3b328a" />
         </linearGradient>
       </defs>
       <rect width="48" height="48" rx="13" fill="url(#seri-logo)" />

@@ -11,7 +11,7 @@ const variants: Record<Variant, string> = {
   primary:
     "text-white bg-gradient-to-br from-royal-400 via-royal-500 to-royal-600 shadow-[var(--shadow-glow)] hover:brightness-110",
   warm:
-    "text-navy-950 bg-gradient-to-br from-gold-300 via-flame-400 to-flame-500 hover:brightness-105 shadow-[0_16px_44px_-16px_rgba(255,107,44,0.65)]",
+    "text-navy-950 bg-gradient-to-br from-gold-300 via-flame-400 to-flame-500 hover:brightness-105 shadow-[0_16px_44px_-16px_rgba(201,162,39,0.6)]",
   outline:
     "text-navy-800 border border-navy-900/15 bg-white/55 hover:bg-white hover:border-navy-900/25",
   glass: "text-navy-800 glass hover:bg-white/90",
@@ -58,7 +58,7 @@ export function Button({
   ariaLabel,
 }: ButtonProps) {
   const classes = cn(
-    "group relative inline-flex select-none items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300 will-change-transform active:scale-[0.97] focus-visible:outline-none",
+    "group relative inline-flex select-none items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300 will-change-transform active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
     variants[variant],
     sizes[size],
     sheen && "sheen",

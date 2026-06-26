@@ -42,7 +42,7 @@ export function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(60% 50% at 78% 12%, rgba(48,97,238,0.35), transparent 70%), radial-gradient(50% 45% at 8% 85%, rgba(255,107,44,0.18), transparent 70%)",
+              "radial-gradient(60% 50% at 78% 12%, rgba(79,67,153,0.42), transparent 70%), radial-gradient(50% 45% at 8% 85%, rgba(250,141,210,0.18), transparent 70%)",
           }}
         />
         <Aurora tone="dark" />

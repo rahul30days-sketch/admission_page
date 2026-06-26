@@ -21,7 +21,7 @@ export function FinalCTA() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(55% 50% at 30% 0%, rgba(255,107,44,0.25), transparent 70%)",
+            "radial-gradient(55% 50% at 30% 0%, rgba(201,162,39,0.22), transparent 70%)",
         }}
       />
 
