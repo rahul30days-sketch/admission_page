@@ -1,13 +1,50 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Menu, Phone, Sparkles, X } from "lucide-react";
+import { BadgeCheck, GraduationCap, IndianRupee, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { navLinks, site } from "@/lib/content";
 import { openEnquiry } from "@/lib/applyBus";
+
+/* College logo — drop your file at `public/site-logo.png`.
+   The white card keeps it legible on both the dark (top) and light
+   (scrolled) navbar states. */
+function SiteLogo({ className, onClick }: { className?: string; onClick?: () => void }) {
+  return (
+    <a
+      href="#top"
+      onClick={onClick}
+      aria-label="SITASRM Engineering & Research Institute — home"
+      className={cn("flex w-fit shrink-0 items-center", className)}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/site-logo.png"
+        alt="SITASRM Engineering & Research Institute"
+        className="h-8 w-auto sm:h-11 lg:h-14"
+      />
+    </a>
+  );
+}
+
+/* AICTE approval badge — `public/aicte-logo.png`. */
+function AicteLogo({ className }: { className?: string }) {
+  return (
+    <div className={cn("flex shrink-0 items-center", className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/aicte-logo.png" alt="AICTE Approved" className="h-7 w-auto sm:h-9 lg:h-11" />
+    </div>
+  );
+}
+
+/* Scrolling announcement ticker messages. */
+const announcements = [
+  { Icon: GraduationCap, text: "Early-Bird Scholarship available until 30th June 2026" },
+  { Icon: IndianRupee, text: "Scholarship up to ₹20,000" },
+  { Icon: BadgeCheck, text: "100% Placement & Internship Assistance" },
+];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,18 +75,30 @@ export function Navbar() {
         )}
       >
         <div className="overflow-hidden">
-          <div className="bg-gradient-to-r from-navy-900 via-royal-700 to-navy-900 text-center text-[0.78rem] font-medium text-ice-200">
-            <div className="shell flex items-center justify-center gap-2 py-2">
-              <Sparkles className="h-3.5 w-3.5 text-gold-400" />
-              <span>
-                <strong className="font-semibold text-white">Admissions 2026 are open</strong>
-                <span className="hidden sm:inline">
-                  {" "}— scholarships up to 100% &amp; 100% placement assistance.
-                </span>
-              </span>
+          <div className="bg-gradient-to-r from-navy-900 via-royal-700 to-navy-900 text-[0.78rem] font-medium text-ice-200">
+            <div className="flex items-center gap-3 py-2 pl-3 pr-3 sm:pl-4">
+              {/* crawling ticker */}
+              <div className="mask-x relative flex-1 overflow-hidden">
+                <div className="flex w-max animate-marquee items-center gap-9 whitespace-nowrap [animation-duration:26s] hover:[animation-play-state:paused]">
+                  {[0, 1].map((copy) => (
+                    <div key={copy} aria-hidden={copy === 1} className="flex items-center gap-9">
+                      {announcements.map(({ Icon, text }, i) => (
+                        <span key={i} className="flex items-center gap-2 text-white">
+                          <Icon className="h-3.5 w-3.5 shrink-0 text-gold-400" />
+                          <span>{text}</span>
+                          <span className="text-gold-400/60" aria-hidden>
+                            ◆
+                          </span>
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* fixed apply button */}
               <button
                 onClick={() => openEnquiry()}
-                className="ml-1 hidden rounded-full bg-white/10 px-3 py-0.5 font-semibold text-white transition hover:bg-white/20 sm:inline-block"
+                className="shrink-0 whitespace-nowrap rounded-full bg-white/15 px-3 py-0.5 text-[0.72rem] font-semibold text-white transition hover:bg-white/25"
               >
                 Apply now →
               </button>
@@ -61,26 +110,22 @@ export function Navbar() {
       {/* Main bar */}
       <div
         className={cn(
-          "transition-all duration-500",
-          scrolled
-            ? "border-b border-navy-900/10 bg-white/80 shadow-[0_8px_30px_-12px_rgba(7,15,38,0.18)] backdrop-blur-xl"
-            : "bg-transparent"
+          "border-b border-navy-900/10 bg-white transition-all duration-300",
+          scrolled ? "shadow-[0_8px_30px_-12px_rgba(7,15,38,0.18)]" : "shadow-sm"
         )}
       >
-        <nav className="shell flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
-          <Logo tone={scrolled ? "light" : "dark"} />
+        <nav className="shell flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+            <SiteLogo />
+            <AicteLogo />
+          </div>
 
           <div className="hidden items-center gap-1 lg:flex">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className={cn(
-                  "rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
-                  scrolled
-                    ? "text-navy-700 hover:bg-navy-900/5 hover:text-navy-900"
-                    : "text-white/85 hover:bg-white/10 hover:text-white"
-                )}
+                className="rounded-full px-3.5 py-2 text-sm font-medium text-navy-700 transition-colors hover:bg-navy-900/5 hover:text-navy-900"
               >
                 {l.label}
               </a>
@@ -90,19 +135,14 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <a
               href={`tel:${site.primaryPhone}`}
-              className={cn(
-                "hidden h-11 w-11 items-center justify-center rounded-full border transition md:flex",
-                scrolled
-                  ? "border-navy-900/15 text-navy-700 hover:bg-navy-900/5"
-                  : "border-white/25 text-white hover:bg-white/10"
-              )}
+              className="hidden h-11 w-11 items-center justify-center rounded-full border border-navy-900/15 text-navy-700 transition hover:bg-navy-900/5 md:flex"
               aria-label="Call admissions"
             >
               <Phone className="h-[1.05rem] w-[1.05rem]" />
             </a>
             <Button
               size="sm"
-              variant={scrolled ? "primary" : "warm"}
+              variant="warm"
               onClick={() => openEnquiry()}
               className="hidden sm:inline-flex"
             >
@@ -110,12 +150,7 @@ export function Navbar() {
             </Button>
             <button
               onClick={() => setOpen(true)}
-              className={cn(
-                "flex h-11 w-11 items-center justify-center rounded-full border transition lg:hidden",
-                scrolled
-                  ? "border-navy-900/15 text-navy-800"
-                  : "border-white/25 text-white"
-              )}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-navy-900/15 text-navy-800 transition lg:hidden"
               aria-label="Open menu"
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -142,7 +177,7 @@ export function Navbar() {
             <div className="absolute inset-0 bg-navy-950/95 backdrop-blur-xl" />
             <div className="relative flex h-full flex-col">
               <div className="shell flex h-16 items-center justify-between">
-                <Logo tone="dark" />
+                <SiteLogo onClick={() => setOpen(false)} />
                 <button
                   onClick={() => setOpen(false)}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white"
@@ -182,7 +217,7 @@ export function Navbar() {
                   href={`tel:${site.primaryPhone}`}
                   className="flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 font-semibold text-white"
                 >
-                  <Phone className="h-4 w-4" /> {site.phones[0]}
+                  <Phone className="h-4 w-4" /> {site.callDisplay}
                 </a>
               </div>
             </div>

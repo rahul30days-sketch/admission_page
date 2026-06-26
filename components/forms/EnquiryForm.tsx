@@ -80,20 +80,32 @@ export function EnquiryForm({
 
     setStatus("submitting");
     setServerMsg("");
+    // Static-hosting build: post straight to the CRM webhook from the browser.
+    // Form-encoded keeps it a CORS "simple request" (no preflight); no-cors = fire-and-forget.
+    const endpoint = process.env.NEXT_PUBLIC_CRM_WEBHOOK_URL;
+    const payload = new URLSearchParams({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      course: data.course,
+      city: data.city,
+      state: data.state,
+      consent: data.consent ? "yes" : "no",
+      source: "SITASRM Admissions Landing Page",
+      campaign: "MBA & B.Tech Admissions 2026",
+      message: `Programme interest: ${data.course}. Location: ${data.city}, ${data.state}.`,
+    });
     try {
-      const res = await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
-      if (res.ok && json.ok) {
-        setServerMsg(json.message ?? "");
-        setStatus("success");
-      } else {
-        setStatus("error");
-        setServerMsg(json.error ?? "Something went wrong. Please try again.");
+      if (endpoint) {
+        await fetch(endpoint, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+          body: payload.toString(),
+        });
       }
+      // no-cors yields an opaque response we can't read, so confirm optimistically.
+      setStatus("success");
     } catch {
       setStatus("error");
       setServerMsg("Network error. Please check your connection and retry.");

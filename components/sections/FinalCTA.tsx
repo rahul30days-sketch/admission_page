@@ -85,7 +85,7 @@ export function FinalCTA() {
               href={`tel:${site.primaryPhone}`}
               icon={<Phone className="h-4 w-4" />}
             >
-              Call {site.phones[0]}
+              Call {site.callDisplay}
             </Button>
             <Button
               variant="ghost"

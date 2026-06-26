@@ -103,12 +103,17 @@ export function Footer() {
                 </li>
                 <li className="flex gap-2.5">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-royal-300" />
-                  <a
-                    href={`tel:${site.primaryPhone}`}
-                    className="text-ice-200/70 transition hover:text-white"
-                  >
-                    {site.phones[0]}
-                  </a>
+                  <div className="flex flex-col gap-1">
+                    {site.phones.map((p) => (
+                      <a
+                        key={p}
+                        href={`tel:+${p.replace(/\D/g, "")}`}
+                        className="text-ice-200/70 transition hover:text-white"
+                      >
+                        {p}
+                      </a>
+                    ))}
+                  </div>
                 </li>
                 <li className="flex gap-2.5">
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-royal-300" />

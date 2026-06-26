@@ -27,9 +27,10 @@ export const site = {
     pincode: "201306",
     country: "India",
   },
-  phones: ["+91 92-89-89-6157", "+91 92-17-67-6022", "+91 92-17-67-6046"],
-  primaryPhone: "+919289896157",
-  whatsapp: "919289896157",
+  phones: ["+91 92-17-67-6046", "+91 92-17-67-6035", "+91 92-17-67-6022"],
+  primaryPhone: "+919217676022", // calling
+  callDisplay: "+91 92-17-67-6022", // shown on Call buttons (matches what is dialled)
+  whatsapp: "919289896157", // unchanged — number currently in use for WhatsApp
   emails: ["admissions@seri.net.in", "info@seri.net.in"],
   socials: {
     facebook: "https://www.facebook.com/sitasrm.seri",

@@ -152,7 +152,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0, y: 40, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="relative hidden lg:block"
+          className="relative hidden lg:-mt-12 lg:block"
         >
           <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-royal-500/30 to-flame-500/20 blur-2xl" />
           <EnquiryForm autoFocus={false} />
