@@ -10,7 +10,7 @@ export function JsonLd() {
     url: site.url,
     logo: `${site.url}/opengraph-image`,
     image: `${site.url}/opengraph-image`,
-    description: `${site.tagline}. AICTE-approved MBA & B.Tech programs in Greater Noida, Delhi NCR.`,
+    description: `${site.tagline}. AICTE-approved MBA programme in Greater Noida, Delhi NCR.`,
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.line,

@@ -52,7 +52,7 @@ export function Hero() {
         {/* floating glass chips */}
         <div className="absolute left-[4%] top-[26%] hidden xl:block">
           <div className="glass-dark animate-float-slow flex items-center gap-2 rounded-2xl px-4 py-3 text-sm text-white">
-            <span className="text-lg">🧪</span> AI &amp; ML Labs
+            <span className="text-lg">📊</span> Live Consulting Briefs
           </div>
         </div>
         <div className="absolute left-[6%] bottom-[16%] hidden xl:block">

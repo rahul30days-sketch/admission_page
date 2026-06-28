@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "SITASRM Engineering & Research Institute",
     short_name: "SITASRM",
     description:
-      "MBA & B.Tech Admissions 2026 — AICTE-approved, AI-powered campus in Greater Noida, Delhi NCR.",
+      "MBA Admissions 2026 — AICTE-approved, AI-powered campus in Greater Noida, Delhi NCR.",
     start_url: "/",
     display: "standalone",
     background_color: "#100d27",

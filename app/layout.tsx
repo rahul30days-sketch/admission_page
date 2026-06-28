@@ -25,31 +25,30 @@ const fraunces = Fraunces({
 });
 
 const description =
-  "Admissions 2026 open at SITASRM Engineering & Research Institute, Greater Noida. AICTE-approved MBA & B.Tech (CSE, AI/ML, CS-IT, ECE) with AI labs, up to 100% scholarship and 100% placement assistance in Delhi NCR.";
+  "MBA Admissions 2026 open at SITASRM Engineering & Research Institute, Greater Noida. AICTE-approved MBA with specializations in Marketing, Finance, Business Analytics, HR and Strategy — up to 100% scholarship and 100% placement assistance in Delhi NCR.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default:
-      "MBA & B.Tech Admissions 2026 | SITASRM Engineering & Research Institute, Greater Noida",
+      "MBA Admissions 2026 | SITASRM Engineering & Research Institute, Greater Noida",
     template: "%s | SITASRM Greater Noida",
   },
   description,
   applicationName: site.name,
   keywords: [
     "MBA Admissions 2026",
-    "B.Tech Admissions 2026",
-    "Engineering College in Greater Noida",
     "Best MBA College Delhi NCR",
-    "AI Engineering College",
-    "Top AKTU College",
-    "B.Tech CSE Greater Noida",
-    "AI ML B.Tech",
+    "MBA college Greater Noida",
+    "MBA in Marketing Greater Noida",
+    "MBA in Finance Delhi NCR",
+    "MBA Business Analytics",
+    "MBA Human Resource",
+    "Top AKTU MBA College",
     "SITASRM",
     "SERI Greater Noida",
-    "Computer Science Engineering Greater Noida",
-    "MBA college Greater Noida",
-    "engineering admissions Delhi NCR",
+    "MBA admissions Delhi NCR",
+    "AICTE approved MBA Greater Noida",
   ],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
     url: site.url,
     siteName: site.name,
     title:
-      "MBA & B.Tech Admissions 2026 — SITASRM, Greater Noida",
+      "MBA Admissions 2026 — SITASRM, Greater Noida",
     description,
     images: [
       {
@@ -75,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MBA & B.Tech Admissions 2026 — SITASRM, Greater Noida",
+    title: "MBA Admissions 2026 — SITASRM, Greater Noida",
     description,
     images: ["/opengraph-image"],
     creator: "@seri_grnoida",

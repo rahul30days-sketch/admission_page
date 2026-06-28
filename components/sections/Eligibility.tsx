@@ -1,6 +1,6 @@
 "use client";
 
-import { Briefcase, Check, GraduationCap } from "lucide-react";
+import { Briefcase, Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -13,7 +13,7 @@ function EligibilityCard({
 }: {
   data: typeof eligibility.mba;
   accent: "royal" | "flame";
-  icon: typeof GraduationCap;
+  icon: typeof Briefcase;
   course?: string;
   side: "left" | "right";
 }) {
@@ -69,22 +69,16 @@ export function Eligibility() {
           eyebrow="Eligibility"
           title={
             <>
-              Find your path:{" "}
-              <span className="text-gradient">MBA or B.Tech.</span>
+              Your path to an{" "}
+              <span className="text-gradient">industry-ready MBA.</span>
             </>
           }
-          lead="Two routes to a future-ready career. Check where you fit in seconds."
+          lead="One future-ready route to leadership. Check where you fit in seconds."
           className="mx-auto mb-14 max-w-2xl"
         />
 
-        <div className="relative grid gap-6 md:grid-cols-2 md:gap-10">
+        <div className="relative mx-auto max-w-xl">
           <EligibilityCard data={eligibility.mba} accent="flame" icon={Briefcase} course="MBA" side="left" />
-          <EligibilityCard data={eligibility.btech} accent="royal" icon={GraduationCap} side="right" />
-
-          {/* VS badge */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 hidden h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-mist bg-navy-900 font-display text-sm font-bold text-white md:flex">
-            VS
-          </div>
         </div>
       </div>
     </section>

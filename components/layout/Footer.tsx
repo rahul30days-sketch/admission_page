@@ -24,9 +24,9 @@ export function Footer() {
 
       <div className="relative">
         <div className="shell py-16 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-12">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12">
             {/* Brand */}
-            <div className="lg:col-span-4">
+            <div className="sm:col-span-2 lg:col-span-4">
               <a href="#top" aria-label="SITASRM Engineering & Research Institute — home">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

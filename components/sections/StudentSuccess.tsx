@@ -1,31 +1,13 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Building2, Quote } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { LinkedInIcon } from "@/components/ui/SocialIcons";
-import { accentClasses, iconMap } from "@/lib/icons";
-import { cn } from "@/lib/utils";
-import { journey, testimonials } from "@/lib/content";
+import { iconMap } from "@/lib/icons";
+import { journey } from "@/lib/content";
 import { openEnquiry } from "@/lib/applyBus";
-
-const accents = ["royal", "flame", "gold"];
-
-function Avatar({ name, accent }: { name: string; accent: string }) {
-  const ac = accentClasses[accent];
-  const initials = name
-    .split(" ")
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join("");
-  return (
-    <div className={cn("flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br font-display text-base font-bold text-white", ac.from, ac.to)}>
-      {initials}
-    </div>
-  );
-}
 
 export function StudentSuccess() {
   const reduce = useReducedMotion();
@@ -77,47 +59,7 @@ export function StudentSuccess() {
           </ol>
         </div>
 
-        {/* Testimonials */}
-        <div className="grid gap-5 md:grid-cols-3">
-          {testimonials.map((t, i) => {
-            const accent = accents[i % accents.length];
-            return (
-              <Reveal key={t.name} delay={i * 0.1}>
-                <article className="lift flex h-full flex-col rounded-3xl border border-navy-900/8 bg-white p-6 shadow-card">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Avatar name={t.name} accent={accent} />
-                      <div>
-                        <div className="font-display text-sm font-bold text-navy-900">{t.name}</div>
-                        <div className="text-xs text-ink-soft">{t.program}</div>
-                      </div>
-                    </div>
-                    <LinkedInIcon className="h-5 w-5 text-[#0A66C2]" />
-                  </div>
-
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-600">
-                      Placed · {t.package}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-ink-soft">
-                      <Building2 className="h-3.5 w-3.5" /> {t.role} · {t.company}
-                    </span>
-                  </div>
-
-                  <div className="relative mt-4 flex-1">
-                    <Quote className="absolute -left-1 -top-1 h-7 w-7 text-navy-900/8" />
-                    <p className="relative pl-6 text-sm leading-relaxed text-ink-soft">{t.quote}</p>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>
-        <p className="mt-5 text-center text-xs text-ink-soft">
-          Student outcomes shown are illustrative samples — replace with verified, consented profiles before launch.
-        </p>
-
-        <div className="mt-10 flex flex-col items-center gap-3 text-center">
+        <div className="mt-4 flex flex-col items-center gap-3 text-center">
           <p className="font-display text-xl font-semibold text-navy-900 sm:text-2xl">
             Your success story starts in 2026.
           </p>

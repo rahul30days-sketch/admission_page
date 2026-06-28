@@ -110,8 +110,8 @@ export function EnquiryForm({
       state: data.state,
       consent: data.consent ? "yes" : "no",
       source: "SITASRM Admissions Landing Page",
-      campaign: "MBA & B.Tech Admissions 2026",
-      message: `🎓 New Admission Enquiry — SITASRM\n\n👤 Name: ${data.name}\n📞 Phone: ${data.phone}\n📧 Email: ${data.email}\n📚 Programme: ${data.course}\n📍 Location: ${data.city}, ${data.state}\n\nSource: SITASRM Admissions Landing Page\nCampaign: MBA & B.Tech Admissions 2026`,
+      campaign: "MBA Admissions 2026",
+      message: `🎓 New Admission Enquiry — SITASRM\n\n👤 Name: ${data.name}\n📞 Phone: ${data.phone}\n📧 Email: ${data.email}\n📚 Programme: ${data.course}\n📍 Location: ${data.city}, ${data.state}\n\nSource: SITASRM Admissions Landing Page\nCampaign: MBA Admissions 2026`,
     });
 
     // Send to every configured webhook (CRM + WordPress) in parallel.
@@ -415,7 +415,7 @@ function Field({
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-err` : undefined}
           className={cn(
-            "h-14 w-full rounded-2xl border bg-white/70 px-4 pt-3.5 text-[0.95rem] text-navy-900 outline-none transition",
+            "h-14 w-full rounded-2xl border bg-white/70 px-4 pt-3.5 text-base text-navy-900 outline-none transition sm:text-[0.95rem]",
             error
               ? "border-red-400 ring-2 ring-red-100"
               : focused
@@ -446,7 +446,7 @@ function Select({
         onBlur={() => { setFocused(false); onBlur(); }}
         aria-invalid={!!error}
         className={cn(
-          "h-14 w-full cursor-pointer appearance-none rounded-2xl border bg-white/70 px-4 pt-3.5 pr-10 text-[0.95rem] text-navy-900 outline-none transition",
+          "h-14 w-full cursor-pointer appearance-none rounded-2xl border bg-white/70 px-4 pt-3.5 pr-10 text-base text-navy-900 outline-none transition sm:text-[0.95rem]",
           value ? "text-navy-900" : "text-transparent",
           error
             ? "border-red-400 ring-2 ring-red-100"

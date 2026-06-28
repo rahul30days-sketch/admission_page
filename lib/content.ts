@@ -59,18 +59,18 @@ export const heroBadges = [
 /* Animated hero counters. [VERIFY] numbers before launch. */
 export const heroStats = [
   { value: 100, suffix: "%", label: "Placement Assistance" },
-  { value: 5, suffix: "", label: "Future-Ready Programs" },
+  { value: 5, suffix: "", label: "MBA Specializations" },
   { value: 100, suffix: "%", label: "Max Merit Scholarship" },
   { value: 120, suffix: "+", label: "Hiring Network" }, // [VERIFY]
 ];
 
 export const hero = {
-  kicker: "MBA & B.Tech Admissions 2026 · Greater Noida",
-  titleLead: "Master Technology and Leadership with our",
-  titleAccent: "Integrated", // rendered in editorial serif italic
-  titleTail: "MBA and B.Tech Programme",
+  kicker: "MBA Admissions 2026 · Greater Noida",
+  titleLead: "Master Business and Leadership with our",
+  titleAccent: "Future-Ready", // rendered in editorial serif italic
+  titleTail: "MBA Programme",
   subtitle:
-    "Industry-synced curriculum, AI-powered labs, global immersion and 100% placement assistance — engineered on a Knowledge Park-III campus in the heart of Delhi NCR.",
+    "Industry-synced curriculum, business analytics, global immersion and 100% placement assistance — delivered on a Knowledge Park-III campus in the heart of Delhi NCR.",
   primaryCta: "Apply for 2026",
   secondaryCta: "Request Brochure",
   tertiaryCta: "Watch Campus Film",
@@ -95,11 +95,11 @@ export const whyStories = [
   {
     no: "02",
     icon: "flask",
-    tag: "AI Labs & Innovation Center",
-    title: "Labs where machine learning isn't a chapter — it's the air.",
+    tag: "Analytics & Innovation Center",
+    title: "Where business analytics isn't a chapter — it's the air.",
     body:
-      "GPU-backed AI/ML labs, an IoT & electronics workbench and a dedicated R&D cell focused on artificial intelligence, automation and sustainability. Build, break and ship inside a true Centre of Excellence.",
-    points: ["GPU compute for ML", "IoT & embedded workbench", "R&D cell: AI · Automation · Sustainability"],
+      "A Bloomberg-style finance lab, a business-analytics studio and a dedicated incubation cell focused on data-driven strategy, automation and entrepreneurship. Model, decide and pitch inside a true Centre of Excellence.",
+    points: ["Live analytics & finance labs", "AI-driven decision tools", "Incubation cell: Strategy · Analytics · Ventures"],
     accent: "flame",
   },
   {
@@ -131,79 +131,79 @@ export const whyStories = [
    ============================================================ */
 export const programs = [
   {
-    id: "mba",
-    code: "MBA",
-    degree: "Master of Business Administration",
+    id: "marketing",
+    code: "MBA · Marketing",
+    degree: "Marketing & Brand Management",
     duration: "2 Years · Full-time",
-    icon: "briefcase",
+    icon: "rocket",
     accent: "flame",
     featured: true,
-    tagline: "Lead teams, build ventures, decide with data.",
+    tagline: "Build brands people remember.",
     blurb:
-      "A management degree built for the AI economy — strategy and leadership fused with business analytics and real consulting briefs.",
-    specializations: ["Marketing", "Finance", "Human Resource", "Business Analytics", "Strategy & Leadership"],
-    careers: ["Business Analyst", "Product Manager", "Consultant", "Brand Manager", "Founder"],
+      "Master digital marketing, brand strategy and consumer insight with live campaigns and real industry briefs from day one.",
+    specializations: ["Digital Marketing", "Brand Strategy", "Consumer Behaviour", "Sales", "Market Research"],
+    careers: ["Brand Manager", "Marketing Analyst", "Growth Lead", "Product Marketer", "Digital Strategist"],
     salary: "₹4.5 – 12 LPA", // [VERIFY]
   },
   {
-    id: "cse",
-    code: "B.Tech CSE",
-    degree: "Computer Science & Engineering",
-    duration: "4 Years · Full-time",
-    icon: "code",
+    id: "finance",
+    code: "MBA · Finance",
+    degree: "Finance & Investment Management",
+    duration: "2 Years · Full-time",
+    icon: "trending",
     accent: "royal",
     featured: true,
-    tagline: "Engineer the software the world runs on.",
+    tagline: "Make the numbers tell the strategy.",
     blurb:
-      "Deep computer-science foundations meet modern software engineering — data structures to cloud-native systems and full-stack delivery.",
-    specializations: ["Software Development", "Cloud Computing", "Data Structures", "Full-Stack", "DevOps"],
-    careers: ["Software Engineer", "Cloud Engineer", "Backend Developer", "SDE", "Architect"],
-    salary: "₹4 – 14 LPA", // [VERIFY]
+      "Corporate finance, capital markets, valuation and risk — decision-grade financial skills backed by analytics and live case work.",
+    specializations: ["Corporate Finance", "Investment Banking", "Financial Analytics", "Risk Management", "FinTech"],
+    careers: ["Financial Analyst", "Investment Associate", "Risk Manager", "Equity Researcher", "Consultant"],
+    salary: "₹5 – 14 LPA", // [VERIFY]
   },
   {
-    id: "aiml",
-    code: "B.Tech AI / ML",
-    degree: "Computer Science & Engineering (AI & ML)",
-    duration: "4 Years · Full-time",
+    id: "analytics",
+    code: "MBA · Business Analytics",
+    degree: "Business Analytics & Data Science",
+    duration: "2 Years · Full-time",
     icon: "brain",
     accent: "gold",
     featured: false,
-    tagline: "Teach machines to think — and to ship.",
+    tagline: "Turn data into decisions.",
     blurb:
-      "Specialise in artificial intelligence, machine learning, automation and data science with hands-on GPU labs from year one.",
-    specializations: ["Machine Learning", "Deep Learning", "Automation", "Data Science", "Computer Vision"],
-    careers: ["ML Engineer", "Data Scientist", "AI Researcher", "MLOps Engineer"],
-    salary: "₹5 – 18 LPA", // [VERIFY]
+      "Blend management with data science — predictive analytics, visualisation and AI-driven decision-making for the modern enterprise.",
+    specializations: ["Predictive Analytics", "Data Visualisation", "Machine Learning", "Business Intelligence", "Decision Science"],
+    careers: ["Business Analyst", "Data Analyst", "Analytics Consultant", "Product Analyst"],
+    salary: "₹5 – 15 LPA", // [VERIFY]
   },
   {
-    id: "csit",
-    code: "B.Tech CS & IT",
-    degree: "Computer Science & Information Technology",
-    duration: "4 Years · Full-time",
-    icon: "shield",
+    id: "hr",
+    code: "MBA · Human Resource",
+    degree: "Human Resource Management",
+    duration: "2 Years · Full-time",
+    icon: "handshake",
     accent: "ice",
     featured: false,
-    tagline: "Secure, connect and scale the digital world.",
+    tagline: "Build the teams that build companies.",
     blurb:
-      "Cybersecurity, networking, database systems and IT infrastructure for the engineers who keep the internet safe and fast.",
-    specializations: ["Cybersecurity", "Networking", "Database Systems", "IT Infrastructure", "Cloud Security"],
-    careers: ["Security Analyst", "Network Engineer", "DB Administrator", "DevSecOps"],
-    salary: "₹4 – 13 LPA", // [VERIFY]
+      "Talent strategy, organisational behaviour and people analytics — lead culture, hiring and growth in fast-scaling organisations.",
+    specializations: ["Talent Acquisition", "Org Behaviour", "People Analytics", "Compensation", "L&D"],
+    careers: ["HR Manager", "Talent Partner", "HR Business Partner", "People Ops Lead"],
+    salary: "₹4 – 11 LPA", // [VERIFY]
   },
   {
-    id: "ece",
-    code: "B.Tech ECE",
-    degree: "Electronics & Communication Engineering",
-    duration: "4 Years · Full-time",
-    icon: "circuit",
+    id: "strategy",
+    code: "MBA · Strategy & Leadership",
+    degree: "Strategy & General Management",
+    duration: "2 Years · Full-time",
+    icon: "target",
     accent: "royal",
     featured: false,
-    tagline: "From silicon to signal to system.",
+    tagline: "Lead teams, build ventures, decide with data.",
     blurb:
-      "Electronics, communication systems, embedded design and networking — the backbone of 5G, IoT and modern hardware.",
-    specializations: ["Embedded Systems", "Communication", "VLSI", "IoT", "Signal Processing"],
-    careers: ["Embedded Engineer", "VLSI Engineer", "IoT Developer", "RF Engineer"],
-    salary: "₹3.5 – 11 LPA", // [VERIFY]
+      "Strategy, leadership and entrepreneurship — the general-management track for future founders, consultants and business leaders.",
+    specializations: ["Business Strategy", "Leadership", "Entrepreneurship", "Operations", "Consulting"],
+    careers: ["Consultant", "Product Manager", "Strategy Associate", "Founder", "Operations Lead"],
+    salary: "₹5 – 16 LPA", // [VERIFY]
   },
 ];
 
@@ -212,7 +212,7 @@ export const programs = [
    ============================================================ */
 export const journey = [
   { step: "Admission", icon: "clipboard", text: "Counselling, scholarship & seat — a guided start." },
-  { step: "Foundations", icon: "book", text: "Core engineering & management, tools from day one." },
+  { step: "Foundations", icon: "book", text: "Core management & analytics, tools from day one." },
   { step: "Live Projects", icon: "code", text: "Industry briefs, hackathons and the innovation studio." },
   { step: "Internship", icon: "briefcase", text: "Real teams, real shipping, mentor-backed." },
   { step: "Placement", icon: "trending", text: "Interview prep, offers and your first big role." },
@@ -220,17 +220,8 @@ export const journey = [
 
 export const testimonials = [
   {
-    name: "Aarav Mehta",
-    program: "B.Tech CSE · 2025",
-    role: "Software Engineer",
-    company: "Accenture",
-    package: "₹9.2 LPA",
-    quote:
-      "The labs felt like a startup floor. By final year I'd shipped three real projects — my interviews were just show-and-tell.",
-  },
-  {
     name: "Sneha Verma",
-    program: "MBA · 2025",
+    program: "MBA · Business Analytics · 2025",
     role: "Business Analyst",
     company: "Deloitte",
     package: "₹8.5 LPA",
@@ -238,13 +229,22 @@ export const testimonials = [
       "Live consulting briefs and analytics made the difference. I walked into placements already speaking the industry's language.",
   },
   {
+    name: "Aarav Mehta",
+    program: "MBA · Marketing · 2025",
+    role: "Brand Manager",
+    company: "Accenture",
+    package: "₹9.2 LPA",
+    quote:
+      "Real campaigns from semester one meant my interviews were just show-and-tell. I had a portfolio before I had a degree.",
+  },
+  {
     name: "Mohd. Faizan",
-    program: "B.Tech AI/ML · 2025",
-    role: "ML Engineer",
+    program: "MBA · Finance · 2025",
+    role: "Investment Associate",
     company: "LTIMindtree",
     package: "₹11 LPA",
     quote:
-      "GPU labs from second year meant I trained real models, not toy ones. The mentorship here is genuinely industry-grade.",
+      "Case work on real valuations and live markets made the difference. The mentorship here is genuinely industry-grade.",
   },
 ];
 
@@ -255,7 +255,7 @@ export const testimonials = [
 /* (Scholarship section removed — page focused on admission conversions.) */
 
 /* ============================================================
-   ELIGIBILITY — MBA vs B.Tech comparison
+   ELIGIBILITY — MBA admission criteria
    ============================================================ */
 export const eligibility = {
   mba: {
@@ -267,17 +267,6 @@ export const eligibility = {
       { k: "Entrance Routes", v: "CAT / MAT / CMAT / CUET-PG" },
       { k: "Other Routes", v: "State Entrance · Management Quota" },
       { k: "Ideal For", v: "Graduates & working professionals" },
-    ],
-  },
-  btech: {
-    label: "B.Tech",
-    duration: "4 Years",
-    rows: [
-      { k: "Qualification", v: "10+2 with PCM / Computer Science" },
-      { k: "Minimum Marks", v: "45% · General  |  40% · SC/ST" },
-      { k: "Entrance Routes", v: "JEE Main / CUET" },
-      { k: "Other Routes", v: "State Entrance · Management Quota" },
-      { k: "Ideal For", v: "12th pass / appearing students" },
     ],
   },
 };
@@ -299,20 +288,20 @@ export const admissionSteps = [
    ============================================================ */
 export const faqs = [
   {
-    q: "What programs does SITASRM offer for 2026 admissions?",
-    a: "SITASRM offers a 2-year MBA and four 4-year B.Tech programs — Computer Science & Engineering (CSE), CSE with AI & ML, Computer Science & Information Technology (CS&IT), and Electronics & Communication Engineering (ECE).",
+    q: "What does the MBA at SITASRM offer for 2026 admissions?",
+    a: "SITASRM offers a 2-year, full-time MBA with five specializations — Marketing, Finance, Business Analytics, Human Resource, and Strategy & Leadership — built around real industry briefs and analytics.",
   },
   {
     q: "Is SITASRM approved and affiliated?",
-    a: "Yes. SITASRM Engineering & Research Institute is approved by AICTE (LOA 2025-26) and follows the affiliating university norms for its technical programs.",
-  },
-  {
-    q: "What is the eligibility for B.Tech admission?",
-    a: "Candidates need 10+2 with Physics, Chemistry & Mathematics (or Computer Science) — a minimum of 45% for General and 40% for SC/ST. Admission is via JEE Main, CUET, State Entrance or Management Quota.",
+    a: "Yes. SITASRM Engineering & Research Institute is approved by AICTE (LOA 2025-26) and follows the affiliating university norms for its programs.",
   },
   {
     q: "What is the eligibility for the MBA program?",
     a: "A bachelor's degree in any discipline with at least 50% (General) or 45% (SC/ST). Admission is through CAT, MAT, CMAT, CUET-PG, State Entrance or Management Quota.",
+  },
+  {
+    q: "Can working professionals and fresh graduates both apply?",
+    a: "Yes. The MBA is designed for both fresh graduates and working professionals — counsellors help you choose the right specialization and scholarship based on your background and goals.",
   },
   {
     q: "Are scholarships available?",
@@ -337,16 +326,11 @@ export const faqs = [
    ============================================================ */
 export const courseOptions = [
   "MBA",
-  "B.Tech — CSE",
-  "B.Tech — AI & ML",
-  "B.Tech — CS & IT",
-  "B.Tech — ECE",
-  "Not sure yet",
 ];
 
 export const indianStates = [
   "Uttar Pradesh", "Delhi", "Haryana", "Rajasthan", "Uttarakhand", "Bihar",
-  "Madhya Pradesh", "Punjab", "Jharkhand", "West Bengal", "Maharashtra",
+  "Madhya Pradesh", "Jharkhand", "West Bengal", "Maharashtra",
   "Gujarat", "Other",
 ];
 
@@ -363,13 +347,13 @@ export const navLinks = [
 
 export const footerNav = [
   {
-    title: "Programs",
+    title: "Specializations",
     links: [
-      { label: "MBA", href: "#programs" },
-      { label: "B.Tech CSE", href: "#programs" },
-      { label: "B.Tech AI & ML", href: "#programs" },
-      { label: "B.Tech CS & IT", href: "#programs" },
-      { label: "B.Tech ECE", href: "#programs" },
+      { label: "MBA · Marketing", href: "#programs" },
+      { label: "MBA · Finance", href: "#programs" },
+      { label: "MBA · Business Analytics", href: "#programs" },
+      { label: "MBA · Human Resource", href: "#programs" },
+      { label: "MBA · Strategy & Leadership", href: "#programs" },
     ],
   },
   {

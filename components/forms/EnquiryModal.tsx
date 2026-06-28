@@ -36,7 +36,7 @@ export function EnquiryModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[80] flex items-end justify-center sm:items-center"
+          className="fixed inset-0 z-[80] flex items-end justify-center p-3 sm:items-center sm:p-4"
           role="dialog"
           aria-modal="true"
           aria-label="2026 admission enquiry"
@@ -50,7 +50,7 @@ export function EnquiryModal() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 60, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 280, damping: 30 }}
-            className="relative z-10 max-h-[94vh] w-full max-w-lg overflow-y-auto no-scrollbar sm:m-4"
+            className="relative z-10 max-h-[92vh] w-full max-w-lg overflow-y-auto overflow-x-hidden no-scrollbar"
           >
             <EnquiryForm
               onClose={() => setOpen(false)}

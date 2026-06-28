@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     city,
     state,
     source: "SITASRM Admissions Landing Page",
-    campaign: "MBA & B.Tech Admissions 2026",
+    campaign: "MBA Admissions 2026",
     message: `Programme interest: ${course}. Location: ${city}, ${state}. Consent: ${consent ? "yes" : "no"}.`,
     consent,
     submitted_at: new Date().toISOString(),

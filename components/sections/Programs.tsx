@@ -8,14 +8,6 @@ import { cn } from "@/lib/utils";
 import { programs } from "@/lib/content";
 import { openEnquiry } from "@/lib/applyBus";
 
-const courseFor: Record<string, string> = {
-  mba: "MBA",
-  cse: "B.Tech — CSE",
-  aiml: "B.Tech — AI & ML",
-  csit: "B.Tech — CS & IT",
-  ece: "B.Tech — ECE",
-};
-
 function ProgramCard({ p, i }: { p: (typeof programs)[number]; i: number }) {
   const ac = accentClasses[p.accent];
   const Icon = iconMap[p.icon];
@@ -76,7 +68,7 @@ function ProgramCard({ p, i }: { p: (typeof programs)[number]; i: number }) {
             <span className="ml-1 text-[0.68rem] font-normal text-ink-soft">/ yr*</span>
           </div>
           <button
-            onClick={() => openEnquiry(courseFor[p.id])}
+            onClick={() => openEnquiry("MBA")}
             className={cn(
               "inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-white transition group-hover:gap-2.5",
               ac.bg
@@ -97,15 +89,15 @@ export function Programs() {
       <div className="shell">
         <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <SectionHeading
-            eyebrow="Future-Ready Programs"
+            eyebrow="MBA Specializations"
             eyebrowIcon={<GraduationCap className="h-3.5 w-3.5" />}
             title={
               <>
-                Five degrees. One promise:{" "}
+                Five specializations. One promise:{" "}
                 <span className="text-gradient">a career, not just a certificate.</span>
               </>
             }
-            lead="Each program is engineered around real industry roles, with hands-on labs from year one."
+            lead="Every MBA track is built around real industry roles, with live briefs and analytics from semester one."
           />
         </div>
 

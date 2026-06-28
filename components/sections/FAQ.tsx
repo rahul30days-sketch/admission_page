@@ -41,7 +41,7 @@ export function FAQ() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search questions…"
-              className="h-12 w-full rounded-full border border-navy-900/12 bg-mist pl-11 pr-4 text-sm text-navy-900 outline-none transition focus:border-royal-500 focus:ring-2 focus:ring-royal-500/15"
+              className="h-12 w-full rounded-full border border-navy-900/12 bg-mist pl-11 pr-4 text-base text-navy-900 outline-none transition focus:border-royal-500 focus:ring-2 focus:ring-royal-500/15 sm:text-sm"
               aria-label="Search FAQs"
             />
           </div>
