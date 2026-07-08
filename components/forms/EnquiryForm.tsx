@@ -1,8 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Check, CheckCircle2, ChevronDown, ShieldCheck, Sparkles, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ShieldCheck, Sparkles, X } from "lucide-react";
 import { useMemo, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { courseOptions, indianStates, site } from "@/lib/content";
 import { Confetti } from "./Confetti";
@@ -67,12 +68,13 @@ export function EnquiryForm({
   onClose?: () => void;
   autoFocus?: boolean;
 }) {
+  const router = useRouter();
   const [data, setData] = useState<FormState>({
     ...initial,
     course: defaultCourse ?? "",
   });
   const [touched, setTouched] = useState<Record<string, boolean>>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const [serverMsg, setServerMsg] = useState("");
 
   const set = (k: keyof FormState, v: string | boolean) =>
@@ -133,20 +135,17 @@ export function EnquiryForm({
     const delivered = endpoints.length === 0 || results.some((r) => r.status === "fulfilled");
 
     if (delivered) {
-      setStatus("success");
+      router.push("/thank-you/");
     } else {
       setStatus("error");
       setServerMsg("Network error. Please check your connection and retry.");
     }
   }
 
-  const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
-    `Hi! I just enquired about ${data.course || "admissions"} at SITASRM for 2026.`
-  )}`;
 
   return (
     <div className="glass relative overflow-hidden rounded-[1.75rem] p-5 shadow-float sm:p-7">
-      <Confetti fire={status === "success"} />
+      <Confetti fire={false} />
 
       {/* header */}
       <div className="relative flex items-start justify-between gap-3">
@@ -169,55 +168,6 @@ export function EnquiryForm({
       </div>
 
       <AnimatePresence mode="wait">
-        {status === "success" ? (
-          <motion.div
-            key="success"
-            role="status"
-            aria-live="polite"
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative z-10 flex flex-col items-center py-8 text-center"
-          >
-            <motion.div
-              initial={{ scale: 0, rotate: -20 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 200, damping: 12, delay: 0.1 }}
-              className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-lg"
-            >
-              <CheckCircle2 className="h-11 w-11" />
-            </motion.div>
-            <h3 className="mt-5 font-display text-2xl font-bold text-navy-900">
-              You&apos;re on the 2026 list! 🎉
-            </h3>
-            <p className="mt-2 max-w-xs text-sm text-ink-soft">
-              {serverMsg || "A dedicated counsellor will call you within 24 hours with your scholarship estimate."}
-            </p>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] font-semibold text-white"
-            >
-              Chat with a counsellor on WhatsApp
-            </a>
-            {onClose ? (
-              <button onClick={onClose} className="mt-3 text-sm font-medium text-ink-soft hover:text-navy-900">
-                Close
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  setData({ ...initial, course: defaultCourse ?? "" });
-                  setTouched({});
-                  setStatus("idle");
-                }}
-                className="mt-3 text-sm font-medium text-ink-soft hover:text-navy-900"
-              >
-                Submit another enquiry
-              </button>
-            )}
-          </motion.div>
-        ) : (
           <motion.form
             key="form"
             onSubmit={handleSubmit}
@@ -337,7 +287,6 @@ export function EnquiryForm({
               100% private. A counsellor calls within 24 hours.
             </p>
           </motion.form>
-        )}
       </AnimatePresence>
     </div>
   );

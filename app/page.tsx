@@ -1,3 +1,4 @@
+import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
@@ -34,6 +35,13 @@ export default function Home() {
       <StickyDock />
       <EnquiryModal />
       <JsonLd />
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18118087570"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-config" strategy="afterInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18118087570');`}
+      </Script>
     </>
   );
 }
