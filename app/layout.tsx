@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Sora, Fraunces } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { site } from "@/lib/content";
 
@@ -108,24 +109,38 @@ export default function RootLayout({
       className={`${geist.variable} ${sora.variable} ${fraunces.variable}`}
     >
       <head>
-        {/* Universal CSP fallback for hosts that don't apply `.htaccess` / `_headers`.
-            Header-only directives (frame-ancestors, HSTS, X-Frame-Options) are set
-            at the host layer — see public/.htaccess and public/_headers.
-            `'unsafe-eval'` is added ONLY in dev (React debugging needs it); the
-            production CSP never includes it. */}
+        {/* Universal CSP fallback for hosts that don't apply `.htaccess` / `_headers`. */}
         <meta
           httpEquiv="Content-Security-Policy"
           content={
             `default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; ` +
             `img-src 'self' data: https:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; ` +
-            `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}; ` +
-            `connect-src 'self' https:; frame-src 'self' https://www.google.com https://maps.google.com; ` +
+            `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}; ` +
+            `connect-src 'self' https:; ` +
+            `frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com; ` +
             `upgrade-insecure-requests`
           }
         />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
+        {/* Google Tag Manager — must be as high in <head> as possible */}
+        <Script
+          id="gtm-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T2QLJFJF');`,
+          }}
+        />
       </head>
       <body className="min-h-screen bg-mist text-ink antialiased">
+        {/* Google Tag Manager (noscript) — immediately after <body> */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T2QLJFJF"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         {children}
       </body>
     </html>
